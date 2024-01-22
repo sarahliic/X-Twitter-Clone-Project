@@ -14,7 +14,7 @@ function Home() {
             <p>For you</p>
           </div>
           <div className="border border-green-700">
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="search" />
           </div>
         </nav>
       </section>

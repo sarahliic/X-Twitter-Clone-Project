@@ -4,7 +4,7 @@ import AccountName from "./AccountName";
 function NavBar() {
   return (
     <>
-      <section className="h-screen w-[25%] bg-[#FFFFFF] border border-black">
+      <section className=" bg-[#FFFFFF] ">
         <div className="flex justify-center items-center flex-col ">
           <ul className="w-[70%] pt-4  flex  justify-around">
             <div className="w-[90%]">

@@ -1,6 +1,7 @@
 import React from "react";
 import AccountName from "./AccountName";
 import { Link } from "react-router-dom";
+import BtnPost from "./BtnPost";
 
 function NavBar() {
   return (
@@ -76,9 +77,9 @@ function NavBar() {
                 />
                 <p className="font-sans font-medium text-lg">More</p>
               </li>
-              <button className="bg-[#1A8CD8] text-white font-bold w-56 rounded-full h-10 mt-3 flex justify-center items-center hover:bg-[#1D9BF0]">
-                Post
-              </button>
+              <div>
+                <BtnPost />
+              </div>
             </div>
           </ul>
         </div>

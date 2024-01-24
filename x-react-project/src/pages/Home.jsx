@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import Trending from "../components/Trending";
 import Posted from "../components/Posted";
+import Post from "../components/Post";
 
 function Home() {
   return (
@@ -21,6 +22,9 @@ function Home() {
             <p className="font-bold  p-3 after:block after:absolute after:h-1 after:w-16 after:bg-[#1A8CD8] after:bottom-1">
               For you
             </p>
+          </div>
+          <div>
+            <Post />
           </div>
           <div>
             <Posted />

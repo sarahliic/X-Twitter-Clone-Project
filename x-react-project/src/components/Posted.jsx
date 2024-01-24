@@ -5,7 +5,7 @@ function Posted() {
   return (
     <>
       <section>
-        <div className="bg-white border border-[#eeebeb] hover:bg-[#eeebeb]">
+        <div className="bg-white border border-[#eeebeb] hover:bg-[#f8f6f6]">
           <div className="flex justify-start items-center p-3 ">
             <div className="rounded-full  w-10 flex items-end mt-3">
               <img

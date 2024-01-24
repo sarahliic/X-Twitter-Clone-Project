@@ -69,11 +69,11 @@ function Profile() {
               </div>
               <div className="ml-6 flex  items-center gap-x-5">
                 <p className="text-[#8d8d8de1]">
-                  <span className="text-blacks"> 103 </span>
+                  <span className="text-black"> 103 </span>
                   Following
                 </p>
                 <p className="text-[#8d8d8de1]">
-                  <span className="text-blacks"> 233 </span>
+                  <span className="text-black"> 233 </span>
                   Followers
                 </p>
               </div>

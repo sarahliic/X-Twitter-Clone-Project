@@ -1,5 +1,6 @@
 import React from "react";
 import AccountName from "./AccountName";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -8,19 +9,23 @@ function NavBar() {
         <div className="flex justify-center items-center flex-col ">
           <ul className="w-[70%] pt-4  flex  justify-around">
             <div className="w-[90%]">
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/5968/5968958.png"
-                alt="x logo"
-                className="w-7 mb-4 ml-4 cursor-pointer "
-              />
-              <li className="flex items-center p-4 w-max gap-x-4 pt-3 pb-3 rounded-full hover:bg-[#F1F1F1] cursor-pointer">
+              <Link to={"/"}>
                 <img
-                  src="https://cdn-icons-png.flaticon.com/128/263/263115.png"
-                  alt="icon"
-                  className="w-7"
+                  src="https://cdn-icons-png.flaticon.com/128/5968/5968958.png"
+                  alt="x logo"
+                  className="w-7 mb-4 ml-4 cursor-pointer "
                 />
-                <p className="font-sans font-medium text-lg">Home</p>
-              </li>
+              </Link>
+              <Link to={"/"}>
+                <li className="flex items-center p-4 w-max gap-x-4 pt-3 pb-3 rounded-full hover:bg-[#F1F1F1] cursor-pointer">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/263/263115.png"
+                    alt="icon"
+                    className="w-7"
+                  />
+                  <p className="font-sans font-medium text-lg">Home</p>
+                </li>
+              </Link>
               <li className="flex items-center p-4 w-max gap-x-4 pt-3 pb-3 rounded-full hover:bg-[#F1F1F1] cursor-pointer">
                 <img
                   src="https://cdn-icons-png.freepik.com/128/3031/3031293.png?ga=GA1.1.554408806.1703345920&semt=ais"
@@ -53,14 +58,16 @@ function NavBar() {
                 />
                 <p className="font-sans font-medium text-lg">Lists</p>
               </li>
-              <li className="flex items-center p-4 w-max gap-x-4 pt-3 pb-3 rounded-full hover:bg-[#F1F1F1] cursor-pointer">
-                <img
-                  src="https://cdn-icons-png.freepik.com/128/747/747376.png?ga=GA1.1.554408806.1703345920&semt=ais"
-                  alt="icon"
-                  className="w-7"
-                />
-                <p className="font-sans font-medium text-lg">Profile</p>
-              </li>
+              <Link to={"/Profile"}>
+                <li className="flex items-center p-4 w-max gap-x-4 pt-3 pb-3 rounded-full hover:bg-[#F1F1F1] cursor-pointer">
+                  <img
+                    src="https://cdn-icons-png.freepik.com/128/747/747376.png?ga=GA1.1.554408806.1703345920&semt=ais"
+                    alt="icon"
+                    className="w-7"
+                  />
+                  <p className="font-sans font-medium text-lg">Profile</p>
+                </li>
+              </Link>
               <li className="flex items-center p-4 w-max gap-x-4 pt-3 pb-3 rounded-full hover:bg-[#F1F1F1] cursor-pointer">
                 <img
                   src="https://cdn-icons-png.freepik.com/128/570/570223.png?ga=GA1.1.554408806.1703345920&semt=ais"

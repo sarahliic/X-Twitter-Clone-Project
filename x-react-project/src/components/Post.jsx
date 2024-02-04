@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import BtnPost from "./BtnPost";
 import Action from "../assets/images/actions.png";
 function Post() {
+  const [inputText, setInputText] = useState("");
+  const [onAddTweet, setOnAddTweet] = useState(null);
+
+  const handleInputText = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const tweetsText = {
+    tweets: inputText,
+  };
+  console.log(tweetsText);
   return (
     <>
       <section>
@@ -28,6 +39,9 @@ function Post() {
             <div className="w-[90%] ">
               <input
                 type="text"
+                name="tweet"
+                value={inputText}
+                onChange={handleInputText}
                 placeholder="What is happing?!"
                 className="outline-none text-justify text-[#535353e1] text-lg block h-14 w-full"
               />
@@ -38,7 +52,12 @@ function Post() {
               <img src={Action} alt="actions icon" />
             </div>
             <div className="flex justify-end w-16 text-base  relative right-[-88%] mb-1 ">
-              <BtnPost />
+              <BtnPost
+                setOnAddTweet={setOnAddTweet}
+                inputText={inputText}
+                setInputText={setInputText}
+                tweetsText={tweetsText}
+              ></BtnPost>
             </div>
           </div>
         </div>

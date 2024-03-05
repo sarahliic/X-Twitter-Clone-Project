@@ -1,18 +1,35 @@
-import React, { useState } from "react";
-import BtnPost from "./BtnPost";
+import React, { useEffect, useState } from "react";
 import Action from "../assets/images/actions.png";
+import Posted from "./Posted";
+
 function Post() {
   const [inputText, setInputText] = useState("");
-  const [onAddTweet, setOnAddTweet] = useState(null);
+  const [tweets, setTweets] = useState([]);
 
-  const handleInputText = (e) => {
-    setInputText(e.target.value);
+  // Post data after click to the button "post"
+  const postTweetsData = async () => {
+    const response = await fetch(
+      `https://65ce02fcc715428e8b3fb9c2.mockapi.io/tweet`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          inputText: inputText,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log("post to the api");
+    setTweets((tweets) => [data, ...tweets]);
+    setInputText("");
   };
 
-  const tweetsText = {
-    tweets: inputText,
+  // handle Post submit tweets
+  const handlePostSubmit = () => {
+    postTweetsData();
   };
-  console.log(tweetsText);
   return (
     <>
       <section>
@@ -41,7 +58,9 @@ function Post() {
                 type="text"
                 name="tweet"
                 value={inputText}
-                onChange={handleInputText}
+                onChange={(e) => {
+                  setInputText(e.target.value);
+                }}
                 placeholder="What is happing?!"
                 className="outline-none text-justify text-[#535353e1] text-lg block h-14 w-full"
               />
@@ -52,15 +71,19 @@ function Post() {
               <img src={Action} alt="actions icon" />
             </div>
             <div className="flex justify-end w-16 text-base  relative right-[-88%] mb-1 ">
-              <BtnPost
-                setOnAddTweet={setOnAddTweet}
-                inputText={inputText}
-                setInputText={setInputText}
-                tweetsText={tweetsText}
-              ></BtnPost>
+              <button
+                className="bg-[#1A8CD8] text-white font-bold w-56 rounded-full h-10 mt-3 flex justify-center items-center hover:bg-[#1D9BF0]"
+                onClick={handlePostSubmit}
+              >
+                Post
+              </button>
             </div>
           </div>
         </div>
+      </section>
+
+      <section>
+        <Posted tweets={tweets} setTweets={setTweets} />
       </section>
     </>
   );

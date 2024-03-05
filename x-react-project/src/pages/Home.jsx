@@ -26,9 +26,6 @@ function Home() {
           <div>
             <Post />
           </div>
-          <div>
-            <Posted />
-          </div>
         </div>
         <div className="sticky top-0 h-max">
           <Trending />

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Actions from "./Actions";
 function Posted({ tweets, setTweets }) {
   const [loading, setLoading] = useState(true);
-  // Here Git the data
+  const [deletePost, setDeletePost] = useState(false);
+  // Here Get the data
   const fetchPost = async () => {
     const response = await fetch(
       `https://65ce02fcc715428e8b3fb9c2.mockapi.io/tweet`
@@ -11,6 +12,25 @@ function Posted({ tweets, setTweets }) {
     console.log(data);
     setTweets(data);
     setLoading(false);
+  };
+  // Here Delte the data
+  const deleteTweetPost = async (id) => {
+    const response = await fetch(
+      `https://65ce02fcc715428e8b3fb9c2.mockapi.io/tweet/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (response.status === 200) {
+      setTweets(
+        tweets.filter((tweet) => {
+          return tweet.id !== id;
+        })
+      );
+    } else {
+      return;
+    }
+    alert("Posts deleted successfully");
   };
   useEffect(() => {
     fetchPost();
@@ -21,7 +41,9 @@ function Posted({ tweets, setTweets }) {
       <section>
         {loading ? (
           /* JSX code when loading is true */
-          <div>Loading...</div>
+          <div className="flex justify-center items-center pt-20 pb-20">
+            <span className="loading loading-spinner text-info"></span>
+          </div>
         ) : (
           /* JSX code when loading is false */
           tweets.map((item) => {
@@ -44,11 +66,30 @@ function Posted({ tweets, setTweets }) {
                     <p className="text-sm text-[#9c9c9c]">.4h</p>
                   </div>
                   <div className="flex justify-end  w-96 ">
-                    <img
-                      src="https://cdn-icons-png.freepik.com/128/3661/3661476.png?ga=GA1.1.554408806.1703345920&semt=ais"
-                      alt="more"
-                      className="w-4 ml-11 cursor-pointer "
-                    />
+                    <ul className="menu menu-horizontal px-4">
+                      <li>
+                        <details>
+                          <summary>
+                            {/* <img
+                              src="https://cdn-icons-png.freepik.com/128/3661/3661476.png?ga=GA1.1.554408806.1703345920&semt=ais"
+                              alt="more"
+                              className="w-4 ml-11 cursor-pointer "
+                            /> */}
+                          </summary>
+                          <ul className="p-2 bg-base-500 rounded-md border border-[#a09e9e73] relative z-10">
+                            <li>
+                              <a
+                                className="text-xs text-red-600 font-bold "
+                                onClick={() => deleteTweetPost(item.id)}
+                              >
+                                {" "}
+                                delete
+                              </a>
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <div className="flex justify-center items-center ">

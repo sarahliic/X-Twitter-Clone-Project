@@ -24,6 +24,7 @@ function Post() {
     console.log("post to the api");
     setTweets((tweets) => [data, ...tweets]);
     setInputText("");
+    alert("Posts Add successfully");
   };
 
   // handle Post submit tweets

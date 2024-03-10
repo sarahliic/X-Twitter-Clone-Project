@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Actions from "./Actions";
-function Posted({ tweets, setTweets }) {
+
+function Posted({ tweets, setTweets, inputText }) {
   const [loading, setLoading] = useState(true);
-  const [deletePost, setDeletePost] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   // Here Get the data
   const fetchPost = async () => {
     const response = await fetch(
@@ -13,7 +14,7 @@ function Posted({ tweets, setTweets }) {
     setTweets(data);
     setLoading(false);
   };
-  // Here Delte the data
+  // Here Delete the data
   const deleteTweetPost = async (id) => {
     const response = await fetch(
       `https://65ce02fcc715428e8b3fb9c2.mockapi.io/tweet/${id}`,
@@ -31,6 +32,25 @@ function Posted({ tweets, setTweets }) {
       return;
     }
     alert("Posts deleted successfully");
+  };
+  //Set Favorite Tweets
+  const setPostFavorites = async (tweetId, tweetText) => {
+    const api = await fetch(
+      `https://65b2a1429bfb12f6eafe3674.mockapi.io/likes`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          tweetId: tweetId,
+          tweetText: tweetText,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    );
+    const favoritesPost = await api.json();
+    setFavorites((favorites) => [favoritesPost, ...favorites]);
+    console.log(favoritesPost);
   };
   useEffect(() => {
     fetchPost();
@@ -98,7 +118,11 @@ function Posted({ tweets, setTweets }) {
                   </div>
                 </div>
                 <div>
-                  <Actions />
+                  <Actions
+                    setPostFavorites={setPostFavorites}
+                    tweetId={item.id}
+                    tweetText={item.inputText}
+                  />
                 </div>
               </div>
             );

@@ -21,7 +21,6 @@ function Post() {
       }
     );
     const data = await response.json();
-    console.log("post to the api");
     setTweets((tweets) => [data, ...tweets]);
     setInputText("");
   };

@@ -30,6 +30,7 @@ function Actions({ setPostFavorites, tweetId, tweetText }) {
     }
   };
 
+  // localStorage.clear();
   return (
     <>
       <div className="w-full flex justify-around items-center ">

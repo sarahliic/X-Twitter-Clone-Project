@@ -10,7 +10,6 @@ function Posted({ tweets, setTweets, inputText }) {
       `https://65ce02fcc715428e8b3fb9c2.mockapi.io/tweet`
     );
     const data = await response.json();
-    console.log(data);
     setTweets(data);
     setLoading(false);
   };
@@ -31,7 +30,7 @@ function Posted({ tweets, setTweets, inputText }) {
     } else {
       return;
     }
-    alert("Posts deleted successfully");
+    // alert("Posts deleted successfully");
   };
   //Set Favorite Tweets
   const setPostFavorites = async (tweetId, tweetText) => {
@@ -50,7 +49,6 @@ function Posted({ tweets, setTweets, inputText }) {
     );
     const favoritesPost = await api.json();
     setFavorites((favorites) => [favoritesPost, ...favorites]);
-    console.log(favoritesPost);
   };
   useEffect(() => {
     fetchPost();
